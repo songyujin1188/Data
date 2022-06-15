@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 from csv import writer
 
 url = "https://www.pararius.com/apartments/amsterdam?ac=1"
-html = requests.get(url).
+html = requests.get(url)
 soup = BeautifulSoup(html.content,'html.parser')
 lists = soup.find_all('section', class_="listing-search-item")
 
-with open(house.csv, 'w',encoding='utf-8', newline='') as f:
+with open('house.csv', 'w',encoding='utf-8', newline='') as f:
     write = writer(f)
     head = ['Title', 'Location', 'Price', 'Area', 'Rooms', 'Interior']
     write.writerow(head)
