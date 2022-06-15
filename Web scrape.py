@@ -1,15 +1,23 @@
-import urllib.request, urllib.parse, urllib.error
+import requests
 from bs4 import BeautifulSoup
-import ssl
+from csv import writer
 
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+url = "https://www.pararius.com/apartments/amsterdam?ac=1"
+html = requests.get(url).
+soup = BeautifulSoup(html.content,'html.parser')
+lists = soup.find_all('section', class_="listing-search-item")
 
-url = input('Enter url- ')
-html = urllib.request.urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html,'html.parser')
-
-tags = soup('a')
-for tag in tags:
-    print(tag.get('href',None))
+with open(house.csv, 'w',encoding='utf-8', newline='') as f:
+    write = writer(f)
+    head = ['Title', 'Location', 'Price', 'Area', 'Rooms', 'Interior']
+    write.writerow(head)
+    for list in lists:      
+        title = lists.find('a', class_="listing-search-item__link--title").text.replace('\n','')
+        location = lists.find('div', class_="listing-search-item__location").text.replace('\n','')
+        price = lists.find('div', class_="listing-search-item__price").text.replace('\n','')
+        features_surface_area = lists.find('li', class_="illustrated-features__item illustrated-features__item--surface-area").text.replace('\n','')
+        features_number_of_rooms = lists.find('li', class_="illustrated-features__item illustrated-features__item--number-of-rooms").text.replace('\n','')
+        features_interior = lists.find('li', class_="illustrated-features__item illustrated-features__item--interior").text.replace('\n','')
+        form = [title, location, price, features_surface_area, features_number_of_rooms,features_interior]
+        write.writerow(form)
+    
