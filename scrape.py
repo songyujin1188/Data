@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from csv import writer
 
 url = "https://www.pararius.com/apartments/amsterdam/page-"
-with open("/content/drive/My Drive/house_full.csv", 'w',encoding='utf-8', newline='') as f:
+with open("Desktop/house_full.csv", 'w',encoding='utf-8', newline='') as f:
     write = writer(f)
     head = ['Title', 'Location', 'Price', 'Area', 'Rooms', 'Interior']
     write.writerow(head)
