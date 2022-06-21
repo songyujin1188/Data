@@ -2,12 +2,12 @@ import requests
 from bs4 import BeautifulSoup
 from csv import writer
 
-url = "https://www.pararius.com/apartments/amsterdam/page-"
-with open("Desktop/house_full.csv", 'w',encoding='utf-8', newline='') as f:
+url = "https://www.pararius.com/apartments/amsterdam/page-" #This is the address, after the dash sign will be using the for loop
+with open("/content/drive/My Drive/house_full.csv", 'w',encoding='utf-8', newline='') as f: #This is a python file from google drive
     write = writer(f)
-    head = ['Title', 'Location', 'Price', 'Area', 'Rooms', 'Interior']
+    head = ['Title', 'Location', 'Price', 'Area', 'Rooms', 'Interior'] #This is out dataframe
     write.writerow(head)
-    for page in range(1,24):
+    for page in range(1,24): #There are 24 pages total
       html = requests.get(url+str(page))
       soup = BeautifulSoup(html.content,'html.parser')
       lists = soup.find_all('section', class_="listing-search-item")
