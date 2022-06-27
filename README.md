@@ -1,3 +1,3 @@
-# Data
-This repository is for projects relevant to data analysis,
-and the work was run on Google Colab
+# Data analysis of House leasing in Amsterdam
+This repository is a data analysis project. All data from "https://www.pararius.com/apartments/amsterdam/".
+The codes are run on Google Colab
